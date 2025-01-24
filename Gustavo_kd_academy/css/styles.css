@@ -1,0 +1,343 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #ffff;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+    background-color: black !important; /* Set the entire navbar to white */
+    border-bottom: 1px solid #ddd; /* Optional: Add a subtle bottom border for distinction */
+}
+
+.navbar .navbar-brand {
+    color: #ffff !important; /* Change "Gustavo KD Academy" to black */
+    font-weight: bold; /* Optional: Make it stand out */
+}
+
+.navbar .navbar-brand:hover {
+    color: gray; /* Optional: Add a hover effect for aesthetics */
+}
+
+.nav-link {
+    color: white !important; /* Ensure navbar links are black */
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: gray; /* Optional: Add a hover color effect */
+}
+
+
+/* Hero Section (Carousel) */
+.carousel-inner img {
+    height: 450px; /* Adjust for banner height */
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: #00000099; /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.carousel-caption h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    color: #ddd;
+}
+
+.carousel-caption .btn {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+/* About Section */
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Features Section */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-body h3 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+.card-body p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    background: #fff;
+    color: #fff;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .carousel-inner img {
+        height: 300px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .card-body h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-body p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Full-Screen Animated Background */
+.animated-bg {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(-45deg, #007bff, #6610f2, #ff7f50, #28a745);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Gradient Animation */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Login Card */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 0;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Additional Text Styles */
+p a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #007bff;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        margin: 20px;
+    }
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h2 {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Add Course Form */
+#addCourseForm {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#addCourseForm h5 {
+    font-size: 1.25rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+#addCourseForm .form-label {
+    font-weight: bold;
+    color: #555;
+}
+
+#addCourseForm .form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Courses Table */
+.table {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.table td button {
+    margin: 0 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    #addCourseForm {
+        padding: 15px;
+    }
+
+    #addCourseForm .form-control {
+        font-size: 0.9rem;
+    }
+}

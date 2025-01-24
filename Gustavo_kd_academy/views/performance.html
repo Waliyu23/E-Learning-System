@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Management</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/performance.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Performance Management</h2>
+
+        <!-- Add Performance Button (Only for Admin and Teacher) -->
+        <button id="addPerformanceButton" style="display: none;" onclick="showPerformanceForm()">Add Performance</button>
+
+        <!-- Add Performance Form -->
+        <div id="performanceForm" style="display: none;">
+            <form id="performanceFormElement">
+                <label for="student_id">Student ID</label>
+                <input type="text" id="student_id" name="student_id" required>
+                <label for="course_id">Course ID</label>
+                <input type="text" id="course_id" name="course_id" required>
+                <label for="grade">Grade</label>
+                <input type="text" id="grade" name="grade">
+                <label for="remarks">Remarks</label>
+                <textarea id="remarks" name="remarks"></textarea>
+                <button type="submit">Submit</button>
+                <button type="button" onclick="hidePerformanceForm()">Cancel</button>
+            </form>
+        </div>
+
+        <!-- Performance Table -->
+        <table id="performanceTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Grade</th>
+                    <th>Remarks</th>
+                    <th id="actionsHeader" style="display: none;">Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher - Attendance Management</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/attendance_teacher.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Teacher Attendance Management</h2>
+        <button onclick="showAttendanceForm()">Add Attendance</button>
+        <div id="attendanceForm" style="display: none;">
+            <form id="attendanceFormElement">
+                <label for="student_id">Student ID</label>
+                <input type="text" id="student_id" name="student_id" required>
+                <label for="course_id">Course ID</label>
+                <input type="text" id="course_id" name="course_id" required>
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+                <label for="status">Status</label>
+                <select id="status" name="status">
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                </select>
+                <button type="submit">Submit</button>
+                <button type="button" onclick="hideAttendanceForm()">Cancel</button>
+            </form>
+        </div>
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>

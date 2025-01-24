@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/attendance_admin.js" defer></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Manage Attendance</h2>
+
+        <!-- Add Attendance Form -->
+        <button class="btn btn-primary mb-3" onclick="showAttendanceForm()">Add Attendance</button>
+        <div id="attendanceForm" class="card mb-3" style="display: none;">
+            <div class="card-body">
+                <h5>Add Attendance</h5>
+                <form id="attendanceFormElement">
+                    <div class="mb-3">
+                        <label for="studentId" class="form-label">Student ID</label>
+                        <input type="text" id="studentId" name="studentId" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" id="date" name="date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select id="status" name="status" class="form-select" required>
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideAttendanceForm()">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Attendance Table -->
+        <table class="table table-bordered" id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student ID</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Attendance rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

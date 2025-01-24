@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustavo KD Academy</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="images/university_logo.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+                Gustavo KD Academy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="views/login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section with Text -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/university_banner1.png" class="d-block w-100" alt="Banner 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="animate__animated animate__fadeInDown">Welcome to Gustavo KD Academy</h1>
+                    <p class="lead animate__animated animate__fadeInUp">Empowering students with innovative learning experiences.</p>
+                    <a href="views/login.html" class="btn btn-primary btn-lg mt-3 animate__animated animate__zoomIn">Login to Your Dashboard</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/university_banner2.png" class="d-block w-100" alt="Banner 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="animate__animated animate__fadeInDown">Welcome to Gustavo KD Academy</h1>
+                    <p class="lead animate__animated animate__fadeInUp">Discover opportunities and achieve excellence.</p>
+                    <a href="views/login.html" class="btn btn-primary btn-lg mt-3 animate__animated animate__zoomIn">Login to Your Dashboard</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/university_banner3.jpg" class="d-block w-100" alt="Banner 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="animate__animated animate__fadeInDown">Welcome to Gustavo KD Academy</h1>
+                    <p class="lead animate__animated animate__fadeInUp">Join us and be part of a brighter future.</p>
+                    <a href="views/login.html" class="btn btn-primary btn-lg mt-3 animate__animated animate__zoomIn">Login to Your Dashboard</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- About Section -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="animate__animated animate__fadeInDown">About Gustavo KD Academy</h2>
+            <p class="lead animate__animated animate__fadeInUp">
+                Our platform simplifies course management, attendance tracking, and performance evaluation for admins, teachers, and students.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body">
+                            <i class="bi bi-person-badge fs-1 text-primary"></i>
+                            <h3>Admin Dashboard</h3>
+                            <p>Manage users, courses, attendance, and performance records effortlessly.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body">
+                            <i class="bi bi-mortarboard fs-1 text-success"></i>
+                            <h3>Teacher Dashboard</h3>
+                            <p>Record attendance, manage assigned courses, and track student performance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body">
+                            <i class="bi bi-book fs-1 text-info"></i>
+                            <h3>Student Dashboard</h3>
+                            <p>Enroll in courses, check attendance, and view grades and performance reports.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 Gustavo KD Academy. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

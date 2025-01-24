@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gustavo KD Academy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../php/logout.php">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="container mt-4">
+        <div id="dashboardContent">
+            <!-- Dynamic content for Admin, Teacher, or Student will load here -->
+            <h3>Loading your dashboard...</h3>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dashboardContent = document.getElementById("dashboardContent");
+
+            // Fetch user role from backend
+            fetch("../php/auth.php")
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status === "success") {
+                        const role = data.role;
+
+                        // Load dashboard content based on user role
+                        if (role === "admin") {
+                            renderAdminDashboard();
+                        } else if (role === "teacher") {
+                            renderTeacherDashboard();
+                        } else if (role === "student") {
+                            renderStudentDashboard();
+                        } else {
+                            dashboardContent.innerHTML = `<p>Error: Unknown Role</p>`;
+                        }
+                    } else {
+                        dashboardContent.innerHTML = `<p>Error loading dashboard: ${data.message}</p>`;
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching role:", error);
+                    dashboardContent.innerHTML = `<p>Failed to load dashboard</p>`;
+                });
+
+            // Admin Dashboard
+            function renderAdminDashboard() {
+                dashboardContent.innerHTML = `
+                    <h3>Welcome, Admin</h3>
+                    <ul>
+                        <li><a href="users_admin.html">Manage Users</a></li>
+                        <li><a href="courses_admin.html">Manage Courses</a></li>
+                        <li><a href="attendance_admin.html">Manage Attendance</a></li>
+                        <li><a href="performance.html">Manage Performance</a></li>
+                        <li><a href="assign_courses.html">Assign Courses to Teachers</a></li>
+                    </ul>
+                `;
+            }
+
+            // Teacher Dashboard
+            function renderTeacherDashboard() {
+                dashboardContent.innerHTML = `
+                    <h3>Welcome, Teacher</h3>
+                    <ul>
+                        <li><a href="attendance_teacher.html">Record Attendance</a></li>
+                        <li><a href="performance.html">Record Performance</a></li>
+                        <h4>Your Assigned Courses</h4>
+                        <ul id="teacherCoursesList" class="list-group"></ul>
+                    </ul>
+                `;
+                fetchTeacherCourses();
+            }
+
+            // Student Dashboard
+            function renderStudentDashboard() {
+                dashboardContent.innerHTML = `
+                    <h3>Welcome, Student</h3>
+                    <h4>Available Courses to Enroll</h4>
+                    <ul id="availableCoursesList" class="list-group"></ul>
+                    <h4 class="mt-4">Your Attendance Records</h4>
+                    <ul id="attendanceList" class="list-group"></ul>
+                    <h4 class="mt-4">Your Grades and Performance</h4>
+                    <ul id="performanceList" class="list-group"></ul>
+                `;
+                fetchAvailableCourses();
+                fetchAttendanceRecords();
+                fetchPerformanceRecords();
+            }
+
+            // Fetch Teacher's Courses
+            function fetchTeacherCourses() {
+                fetch("../php/course.php?teacher_id=current")
+                    .then((response) => response.json())
+                    .then((courses) => {
+                        const coursesList = document.getElementById("teacherCoursesList");
+                        coursesList.innerHTML = "";
+                        if (Array.isArray(courses) && courses.length > 0) {
+                            courses.forEach((course) => {
+                                const listItem = document.createElement("li");
+                                listItem.className = "list-group-item";
+                                listItem.textContent = `${course.name} - ${course.description}`;
+                                coursesList.appendChild(listItem);
+                            });
+                        } else {
+                            coursesList.innerHTML = "<li>No assigned courses</li>";
+                        }
+                    })
+                    .catch((error) => console.error("Error fetching teacher's courses:", error));
+            }
+
+            // Fetch Available Courses for Students
+            function fetchAvailableCourses() {
+                fetch("../php/course.php")
+                    .then((response) => response.json())
+                    .then((courses) => {
+                        const coursesList = document.getElementById("availableCoursesList");
+                        coursesList.innerHTML = "";
+                        if (Array.isArray(courses) && courses.length > 0) {
+                            courses.forEach((course) => {
+                                const listItem = document.createElement("li");
+                                listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+                                listItem.innerHTML = `
+                                    ${course.name} - ${course.description}
+                                    <button class="btn btn-primary btn-sm" onclick="enrollCourse(${course.id})">Enroll</button>
+                                `;
+                                coursesList.appendChild(listItem);
+                            });
+                        } else {
+                            coursesList.innerHTML = "<li>No available courses</li>";
+                        }
+                    })
+                    .catch((error) => console.error("Error fetching available courses:", error));
+            }
+
+            // Fetch Attendance Records for Students
+            function fetchAttendanceRecords() {
+                fetch("../php/attendance.php")
+                    .then((response) => response.json())
+                    .then((records) => {
+                        const attendanceList = document.getElementById("attendanceList");
+                        attendanceList.innerHTML = "";
+                        if (Array.isArray(records) && records.length > 0) {
+                            records.forEach((record) => {
+                                const listItem = document.createElement("li");
+                                listItem.className = "list-group-item";
+                                listItem.textContent = `${record.course_name} - ${record.date} - ${record.status}`;
+                                attendanceList.appendChild(listItem);
+                            });
+                        } else {
+                            attendanceList.innerHTML = "<li>No attendance records</li>";
+                        }
+                    })
+                    .catch((error) => console.error("Error fetching attendance records:", error));
+            }
+
+            // Fetch Performance Records for Students
+            function fetchPerformanceRecords() {
+                fetch("../php/performance.php")
+                    .then((response) => response.json())
+                    .then((records) => {
+                        const performanceList = document.getElementById("performanceList");
+                        performanceList.innerHTML = "";
+                        if (Array.isArray(records) && records.length > 0) {
+                            records.forEach((record) => {
+                                const listItem = document.createElement("li");
+                                listItem.className = "list-group-item";
+                                listItem.textContent = `${record.course_name} - Grade: ${record.grade} - Remarks: ${record.remarks}`;
+                                performanceList.appendChild(listItem);
+                            });
+                        } else {
+                            performanceList.innerHTML = "<li>No performance records</li>";
+                        }
+                    })
+                    .catch((error) => console.error("Error fetching performance records:", error));
+            }
+
+            // Enroll in a Course
+            function enrollCourse(courseId) {
+                fetch("../php/enrollment.php", {
+                    method: "POST",
+                    body: JSON.stringify({ course_id: courseId }),
+                    headers: { "Content-Type": "application/json" },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        alert(data.message);
+                        fetchAvailableCourses();
+                    })
+                    .catch((error) => console.error("Error enrolling in course:", error));
+            }
+        });
+    </script>
+</body>
+</html>
